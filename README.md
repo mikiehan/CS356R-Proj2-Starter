@@ -67,11 +67,10 @@ In the spectogram plot, you can see clearly the signal is increasing from fmin t
 	![image](./FMCW_spectogram.jpg).
 
 What would received signal be? RX is the delayed copy of the TX signal. Thus in the St(t) equation shown above, instead of t, we can simply apply t-&Delta;t instead resulting below equation, where &alpha; is the attenuation factor and td is &Delta;t (TOF).
+
 	![image](./FMCW_rx_equation.png)
 
-Here in this pre-lab exercise, we generate RX for illustration purpose only, but in real setting RX will be measured at the wireless device.
-
-* Continue typing below commands in MATLAB:
+* Here in this pre-lab exercise, we generate RX for illustration purpose only, but in real setting RX will be measured at the wireless device. Let's continue typing below commands in MATLAB:
 	```MATLAB
 	d = 5; % the distance traveled (just picked 5 meter arbitrarily)
 	c = 343; % speed of sound is 343 m/sec
@@ -80,10 +79,18 @@ Here in this pre-lab exercise, we generate RX for illustration purpose only, but
 	figure;
 	plot(t, RX); % received signal in time domain.
 	```
-	
-Now the question is how can we measure &Delta;f based on RX signal. We assume RX knows what exactly TX signal's parameters are (i.e., fmin, Bandwidth, Chirp Duration, Sampling rate, etc). 
 
-What the receiver do is it will "mixes" (multiplies) the received RX signal with TX signal and apply FFT and see if we see any peaks in the FFT plot. The frequency that peaks 
+Now the question is how can we measure &Delta;f based on RX signal. Note TX signal's parameters (i.e., fmin, Bandwidth, Chirp Duration, Sampling rate, etc) are well-known parameter at the receiver. 
+
+What the receiver do is first it will filter the received signal so that it contains only the frequency components within the range of [fmin, fmax]. Then, it will "mix" (multiplies) the received RX signal with TX signal, which yields the following equation.
+
+	![image](./FMCW_mixed_equation.png)
+
+Let R = 2 * D, and Vs = speed of sound, then &Delta;t is R/Vs. Plugging &Delta;t = R/Vs and simplifying, Sm(t) becomes: 
+
+	![image](./FMCW_mixed_full_equation.png)
+
+and apply FFT. and see if we see any peaks in the FFT plot. The frequency that peaks 
 
 * How to 
 To see the frequency domain content of a given signal in MATLAB, we typically use the function `fft` (which stands for Fast Fourier Transform). The `fft` operates on non-periodic signals which are sampled in time and have finite length. The output of the `fft` is very similar to what we would expect from doing the Fourier Series of a periodic signal – we essentially obtain `a` and `b` coefficients which can be examined to see the frequency content of a given signal.
