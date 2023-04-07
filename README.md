@@ -1,4 +1,4 @@
-# Project 2 - Part 1: Distance Estimation with acoustic FMCW Signal
+# Project 2 Primer: Distance Estimation with acoustic FMCW Signal
 ## Goal
 * To understand how FWCW signal works to estimate distance
 
