@@ -7,11 +7,11 @@
 Before we enter Project 2, we need to provide some additional background that will help us in our future analysis. 
 FMCW signal transmits a narrowband signal whose carrier frequency changes linearly with time for each sweep. 
 	![image](./FMCW.png)
-The green line represents the transmitted signal where the frequency increases from f0 till fx(T), where T is the sweep duration or chirp. The figure shows 2 sweeps. 
+The green line represents the transmitted signal where the frequency increases from f0 till fx(T), where T is the duration of one sweep or chirp (chirp duration). The figure shows 2 sweeps. 
 
-The red line represents the received signal which is the delayed copy of the transmitted signal by &Delta;t = distance traveled/speed of signal. 
+The red line represents the received signal which is the delayed copy of the transmitted signal by &Delta;t (aka TOF, Time Of Flight)= distance traveled/speed of signal.
 
-In our experiment setting, the wireless signal is transmitted and received back to the wireless device, thus distance traveled is 2D where D is the one way distance from the device to the human body. 
+In our experiment setting, the wireless signal is transmitted and received back to the wireless device, thus distance traveled is 2*D where D is the one way distance from the device to the human body. 
 	![image](./distance.png)
 
 In our experiment, we will be using acoustic FMCW signal where the speed of sound is 343 m/s and its frequency range is from 10kHz till 22kHz.
