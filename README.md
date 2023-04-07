@@ -9,12 +9,23 @@ FMCW signal transmits a narrowband signal whose carrier frequency changes linear
 	![image](./FMCW.png)
 The green line represents the transmitted signal where the frequency increases from f0 till fx(T), where T is the duration of one sweep or chirp (chirp duration). The figure shows 2 sweeps. 
 
-The red line represents the received signal which is the delayed copy of the transmitted signal by &Delta;t (aka TOF, Time Of Flight)= distance traveled/speed of signal.
+The red line represents the received signal which is a delayed copy of the transmitted signal by &Delta;t (aka TOF, Time Of Flight)= distance traveled/speed of signal.
+
+The basic idea for FMCW signal is since the received signal (RX) is a delayed copy of the transmitted signal (TX), by estimating the frequency difference between TX and RX (&Delta;f, which is easier to measure), we can estimate the time difference between TX and RX (&Delta;t, or TOF), and based on &Delta;t we can estimate the distance. 
+
+Based on the FMCW signal figure. Answer the following questions.
+
+* What is the slope of TX signal (which is the same as the slope of RX signal) in terms of Bandwidth B and Chirp duration T? [Put your answer here]
+
+* 
+
 
 In our experiment setting, the acoustic FMCW signal is transmitted from the wireless device and reaches the body and reflected back to the wireless device, thus distance traveled is 2*D where D is the one way distance from the device to the body. 
 	![image](./distance.png)
 
 The acoustic FMCW signal travels at 343 m/s (this is the speed of sound) and we use the frequency range is from 10kHz till 22kHz (Bandwidth of 12kHz).
+
+
 
 * What is FMCW Signal? To understand, type the following commands in MATLAB:
 	```MATLAB
@@ -36,6 +47,7 @@ You should see a plot that appears as below. Frequency increases linearly with t
 
 Let's generate FMCW in time domain where the actual equation is as follows: 
 	![image](./FMCW_equation.png)
+
 Also we will plot the signal in both time domain and in frequency domain. 
 
 	```MATLAB
@@ -43,10 +55,11 @@ Also we will plot the signal in both time domain and in frequency domain.
 	figure;
 	plot(t, yR0); % FMCW in time domain
 	figure; 
-	spectrogram(yR0,'yaxis',128,120,128,Fs); % FMCW in frequency domain
+	spectrogram(yR0,'yaxis',128,120,128,Fs); % FMCW in frequency domai (note x axis is time)
 	```
 Now you should see two plots that appears as below. In the first plot, it is hard to see but frequency is increasing with time.   
 	![image](./FMCW.png)
+
 In the spectogram plot, you can see clearly the signal is increasing from fmin to fmax with time which matches with the very first figure we generated with t vs movingFreq. You can read more about matlab's [spectogram function](https://www.mathworks.com/help/signal/ref/spectrogram.html). 
 	![image](./FMCW_spectogram.jpg).
 
