@@ -66,11 +66,12 @@ Now you should see two plots that appears as below. In the first plot, it is har
 In the spectogram plot, you can see clearly the signal is increasing from fmin to fmax with time which matches with the very first figure we generated with t vs movingFreq. You can read more about matlab's [spectogram function](https://www.mathworks.com/help/signal/ref/spectrogram.html). 
 	![image](./FMCW_spectogram.jpg).
 
-* What would received signal be? RX is the delayed copy of the TX signal. Thus in the St(t) equation shown above, instead of t, we can simply apply t-&Delta;t instead resulting below equation, where &alpha; is the attenuation factor and td is &Delta;t (TOF).
+What would received signal be? RX is the delayed copy of the TX signal. Thus in the St(t) equation shown above, instead of t, we can simply apply t-&Delta;t instead resulting below equation, where &alpha; is the attenuation factor and td is &Delta;t (TOF).
 	![image](./FMCW_rx_equation.png)
 
 Here in this pre-lab exercise, we generate RX for illustration purpose only, but in real setting RX will be measured at the wireless device.
 
+* Continue typing below commands in MATLAB:
 	```MATLAB
 	d = 5; % the distance traveled (just picked 5 meter arbitrarily)
 	c = 343; % speed of sound is 343 m/sec
@@ -79,7 +80,7 @@ Here in this pre-lab exercise, we generate RX for illustration purpose only, but
 	figure;
 	plot(t, RX); % received signal in time domain.
 	```
-
+	
 Now the question is how can we measure &Delta;f based on RX signal. We assume RX knows what exactly TX signal's parameters are (i.e., fmin, Bandwidth, Chirp Duration, Sampling rate, etc). 
 
 What the receiver do is it will "mixes" (multiplies) the received RX signal with TX signal and apply FFT and see if we see any peaks in the FFT plot. The frequency that peaks 
