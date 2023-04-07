@@ -25,6 +25,10 @@ Based on the FMCW signal figure. Answer the following questions.
 
 * Q5: As you can see from Equation 4, the only parameter we do not know thus need to measure is [Put your answer here]. 
 
+* Q6: What is the relationship between wavelength and frequency of a wireless signal? [Put your answer here.] 
+
+* Q7: Wireless signal has a phase &Phi; = 2&pi; * distance / wavelength. Based on Q6, how can you express phase in terms of frequency? [Put your answer here.]  
+
 Let's now talk specifics about our experiment setting. In our setting, the acoustic FMCW signal is transmitted from the wireless device and reaches the body and reflected back to the wireless device, thus distance traveled is 2*D where D is the one way distance from the device to the body. 
 	![image](./distance.png)
 
@@ -90,7 +94,7 @@ Let R = 2 * D, and Vs = speed of sound, then &Delta;t is R/Vs. Plugging &Delta;t
 
 ![image](./FMCW_mixed_full_equation.png)
 
-and apply FFT. and see if we see any peaks in the FFT plot. The frequency that peaks 
+Analyzing the frequency spectrum of the mixed signal, we have f_mixed = 1/2&pi; * &Delta;phase/&Delta;time.
 
 * How to 
 To see the frequency domain content of a given signal in MATLAB, we typically use the function `fft` (which stands for Fast Fourier Transform). The `fft` operates on non-periodic signals which are sampled in time and have finite length. The output of the `fft` is very similar to what we would expect from doing the Fourier Series of a periodic signal – we essentially obtain `a` and `b` coefficients which can be examined to see the frequency content of a given signal.
