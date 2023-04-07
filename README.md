@@ -25,10 +25,6 @@ Based on the FMCW signal figure. Answer the following questions.
 
 * Q5: As you can see from Equation 4, the only parameter we do not know thus need to measure is [Put your answer here]. 
 
-* Q6: What is the relationship between wavelength and frequency of a wireless signal? [Put your answer here.] 
-
-* Q7: Wireless signal has a phase &Phi; = 2&pi; * distance / wavelength. Based on Q6, how can you express phase in terms of frequency? [Put your answer here.]  
-
 Let's now talk specifics about our experiment setting. In our setting, the acoustic FMCW signal is transmitted from the wireless device and reaches the body and reflected back to the wireless device, thus distance traveled is 2*D where D is the one way distance from the device to the body. 
 	![image](./distance.png)
 
@@ -94,31 +90,26 @@ Let R = 2 * D, and Vs = speed of sound, then &Delta;t is R/Vs. Plugging &Delta;t
 
 ![image](./FMCW_mixed_full_equation.png)
 
-Analyzing the frequency spectrum of the mixed signal, we have f_mixed = 1/2&pi; * &Delta;phase/&Delta;time.
+Now focus on the second term with t (translate it to 2&pi;F t), then frequency F = BR/VsT. This means when we apply FFT of this signal and plot the magnitude, we will see clear peak at the frequency F, which is &Delta;f that we were looking for.  
 
-* How to 
-To see the frequency domain content of a given signal in MATLAB, we typically use the function `fft` (which stands for Fast Fourier Transform). The `fft` operates on non-periodic signals which are sampled in time and have finite length. The output of the `fft` is very similar to what we would expect from doing the Fourier Series of a periodic signal – we essentially obtain `a` and `b` coefficients which can be examined to see the frequency content of a given signal.
-	* In MATLAB, type `edit fft_example.m`
-	* Answer yes when prompted for the creation of a new file. 
-	* Within the new edit window, type in the following commands, save and run the script.
-		```MATLAB
-		t = 0:19;
-		f = -10:9; % use index of frequencies for easy viewing in stem plot
-		y = sin(2*pi*1/20*t); % sine wave with frequency 1/20
-		yf = fft(y);
-		a = real(yf); % a coefficients of Fourier Transform
-		b = imag(yf); % b coefficients of Fourier Transform
-		subplot(221); % left, upper corner of 2x2 plot
-		stem(f,fftshift(a)); % make stick figure plot, fftshift used to properly show positive and negative frequencies
-		title('a coeff');
-		subplot(222); % right, upper corner of 2x2 plot
-		stem(f,fftshift(b));
-		title('b coeff');
-		subplot(223); % left, lower corner of 2x2 plot
-		stem(f,fftshift(abs(yf))); % magnitude of fft coefficients, i.e., sqrt(a2 + b2)
-		title('magnitude')
-		```
-	* You should now see a plot as shown below. Notice that for the sine wave signal, the `a` coefficients are all essentially zero (notice the scale is 1e-15), whereas the `b` coefficients have non-zero values only for index values of +1 and -1 (which correspond to frequencies of +1/20 and -1/20). Notice that the magnitude plot is even symmetric about zero frequency, and the phase plot is odd symmetric about zero frequency.  
+* Let's get it working in MATLAB by continue typing below command: 
+	```MATLAB
+	prod = TX.*RX; % filtering code omitted. Mixing TX and RX.
+	L = length(prod);
+	Y = fft(prod);
+	Mag_Y = abs(Y); % magnitude of FFT result
+	
+	bin_vals = [0 : L-1];
+	freq_Hz = bin_vals*Fs/L;
+	L_2 = ceil(L/2);
+	figure;
+	plot(freq_Hz(1:L_2), Mag_Y(1:L_2))
+	xlabel('Frequency (Hz)')
+	ylabel('Magnitude');
+	title('Single-sided Magnitude spectrum (Hertz)');
+	```
+	* You should now see a plot as shown below. 
+ 
 	  ![image](https://user-images.githubusercontent.com/27924407/212124124-83baef07-dbd0-4c5e-a9a6-67d3f24904b7.png)  	
 	
 * To better see when the a or b coefficients are essentially zero, add the following
