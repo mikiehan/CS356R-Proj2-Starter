@@ -82,7 +82,7 @@ What would received signal be? RX is the delayed copy of the TX signal. Thus in 
 
 Now the question is how can we measure &Delta;f based on RX signal. Note TX signal's parameters (i.e., fmin, Bandwidth, Chirp Duration, Sampling rate, etc) are well-known parameter at the receiver. 
 
-What the receiver do is first it will filter the received signal so that it contains only the frequency components within the range of [fmin, fmax]. Then, it will "mix" (multiplies) the received RX signal with TX signal, which yields the following equation.
+The receiver simply "mixes" (multiplies) the received RX signal with TX signal, which will yield the following equation.
 
 ![image](./FMCW_mixed_equation.png)
 
@@ -92,28 +92,20 @@ Let R = 2 * D, and Vs = speed of sound, then &Delta;t is R/Vs. Plugging &Delta;t
 
 Now focus on the second term with t (translate it to 2&pi;F t), then frequency F = BR/VsT. This means when we apply FFT of this signal and plot the magnitude, we will see clear peak at the frequency F, which is &Delta;f that we were looking for.  
 
-* Let's get it working in MATLAB by continue typing below command: 
+* Let's get it working in MATLAB: 
 	```MATLAB
 	prod = TX.*RX; % filtering code omitted. Mixing TX and RX.
 	L = length(prod);
-	Y = fft(prod);
-	Mag_Y = abs(Y); % magnitude of FFT result
-	
-	bin_vals = [0 : L-1];
-	freq_Hz = bin_vals*Fs/L;
-	L_2 = ceil(L/2);
-	figure;
-	plot(freq_Hz(1:L_2), Mag_Y(1:L_2))
-	xlabel('Frequency Bin Number')
-	ylabel('Magnitude');
-	title('Single-sided Magnitude spectrum (Hertz)');
+	% Write your own code that performs FFT and plots the magnitude
 	```
-You should now see a plot as shown below. 
+After completing your code and running it, you should now see a clear peak in the plot. 
  
-	  ![image](./FFT_peak.jpg)  	
-	
 * Q6: What is the peak frequency in Hz you see here? [Put your answer here.]
 
 * Q7: What is the estimated distance estimation based on Q6? [Put your answer here.]
 
-* Q8: Note in this pre-project exercise we only used 1 chirp (1 sweep) of FMCW signal. Describe how you can use similar technique used here to estimate the distance that is changing over time (such as breathing human body). [Put your answer here.]
+* Q8: Check in your completed .m file in this repository.
+
+* Q9: Also check in the final FFT figure (you can save as jpg) in this repository.
+
+* Q10: Note in this pre-project exercise we only used 1 chirp (1 sweep) of FMCW signal. Describe how you can use similar technique used here to estimate the distance that is changing over time (such as a walking person, a breathing body). [Put your answer here.]
