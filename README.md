@@ -70,6 +70,7 @@ In the spectogram plot, you can see clearly the signal is increasing from fmin t
 	![image](./FMCW_rx_equation.png))
 
 Here in this pre-lab exercise, we generate RX for illustration purpose only, but in real setting RX will be measured at the wireless device.
+
 	```MATLAB
 	d = 5; % the distance traveled (just picked 5 meter arbitrarily)
 	c = 343; % speed of sound is 343 m/sec
