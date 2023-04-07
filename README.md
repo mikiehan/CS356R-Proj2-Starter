@@ -58,13 +58,15 @@ Also we will plot the signal in both time domain and in frequency domain.
 	figure;
 	plot(t, TX); % FMCW in time domain
 	figure; 
-	spectrogram(RX,'yaxis',128,120,128,Fs); % FMCW in frequency domai (note x axis is time)
+	spectrogram(TX,'yaxis',128,120,128,Fs); % FMCW in frequency domain (note x axis is time)
 	```
 Now you should see two plots that appears as below. In the first plot, it is hard to see but frequency is increasing with time.   
 	![image](./FMCW.png)
 
 In the spectogram plot, you can see clearly the signal is increasing from fmin to fmax with time which matches with the very first figure we generated with t vs movingFreq. You can read more about matlab's [spectogram function](https://www.mathworks.com/help/signal/ref/spectrogram.html). 
 	![image](./FMCW_spectogram.jpg).
+
+In the real experiment, you would now save this TX signal as .wav file (a sound file). And with your device (laptop or phone) play this TX where an object (or body) is some distance away from your device. 
 
 What would received signal be? RX is the delayed copy of the TX signal. Thus in the St(t) equation shown above, instead of t, we can simply apply t-&Delta;t instead resulting below equation, where &alpha; is the attenuation factor and td is &Delta;t (i.e., TOF).
 
