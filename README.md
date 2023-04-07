@@ -15,19 +15,22 @@ The basic idea for FMCW signal is since the received signal (RX) is a delayed co
 
 Based on the FMCW signal figure. Answer the following questions.
 
-* What is the slope of TX signal (which is the same as the slope of RX signal) in terms of Bandwidth B and Chirp duration T? <span style="color:red">Put your answer here.</span>
+* What is the slope of the TX signal (which is the same as the slope of RX signal) expressed in terms of Bandwidth B and Chirp duration T? [Put your answer here] -> Let's call this Equation 1.
 
-* 
+* What is TOF expressed in terms of &Delta;f and the slope? [Put your answer here] --> Let's call this Equation 2. 
 
+* What is the distance traveled by the wireless signal expressed in terms of speed of sound and TOF? [Put your answer here] --> Let's call this Equation 3. 
 
-In our experiment setting, the acoustic FMCW signal is transmitted from the wireless device and reaches the body and reflected back to the wireless device, thus distance traveled is 2*D where D is the one way distance from the device to the body. 
+* Putting it all together: Using Eq 1, Eq 2, and Eq 3, how can you express the distance traveled in terms of speed of sound, &Delta;f, T, and B? [Pur your answer here] --> Let's call this Equation 4.
+
+* As you can see from Equation 4, the only parameter we do not know thus need to measure is Equation 4 [Put your answer here]. 
+
+Let's now talk specifics about our experiment setting. In our setting, the acoustic FMCW signal is transmitted from the wireless device and reaches the body and reflected back to the wireless device, thus distance traveled is 2*D where D is the one way distance from the device to the body. 
 	![image](./distance.png)
 
-The acoustic FMCW signal travels at 343 m/s (this is the speed of sound) and we use the frequency range is from 10kHz till 22kHz (Bandwidth of 12kHz).
+Also note the acoustic FMCW signal travels at 343 m/s (this is the speed of sound) and the frequency range used will be from 10kHz till 22kHz (Bandwidth of 12kH), which falls into the frequency range of sound. (Note the audible sound range is from 20Hz to 20kHz)
 
-
-
-* What is FMCW Signal? To understand, type the following commands in MATLAB:
+* Now let's generate FMCW signal. Type the following commands in MATLAB:
 	```MATLAB
 	Fs = 48000; % sampling rate in Hz
 	Ts = 1/Fs; % duration of one sample
@@ -51,11 +54,11 @@ Let's generate FMCW in time domain where the actual equation is as follows:
 Also we will plot the signal in both time domain and in frequency domain. 
 
 	```MATLAB
-	yR0=cos(2*pi*(1/2*t.^2 * B/chirpDuration + fmin*t)); % one chirp of FMCW signal 
+	TX=cos(2*pi*(1/2*t.^2 * B/chirpDuration + fmin*t)); % one chirp of FMCW signal 
 	figure;
-	plot(t, yR0); % FMCW in time domain
+	plot(t, TX); % FMCW in time domain
 	figure; 
-	spectrogram(yR0,'yaxis',128,120,128,Fs); % FMCW in frequency domai (note x axis is time)
+	spectrogram(RX,'yaxis',128,120,128,Fs); % FMCW in frequency domai (note x axis is time)
 	```
 Now you should see two plots that appears as below. In the first plot, it is hard to see but frequency is increasing with time.   
 	![image](./FMCW.png)
@@ -63,30 +66,25 @@ Now you should see two plots that appears as below. In the first plot, it is har
 In the spectogram plot, you can see clearly the signal is increasing from fmin to fmax with time which matches with the very first figure we generated with t vs movingFreq. You can read more about matlab's [spectogram function](https://www.mathworks.com/help/signal/ref/spectrogram.html). 
 	![image](./FMCW_spectogram.jpg).
 
-* What would received signal be? RX is the delayed copy of the TX signal. So based on the time delay we can generate RX as follows
+* What would received signal be? RX is the delayed copy of the TX signal. Thus in the St(t) equation shown above, instead of t, we can simply apply t-&Delta;t instead resulting below equation, where &alpha; is the attenuation factor and td is &Delta;t (TOF).
+	![image](./FMCW_rx_equation.png))
+
+Here in this pre-lab exercise, we generate RX for illustration purpose only, but in real setting RX will be measured at the wireless device.
 	```MATLAB
 	d = 5; % the distance traveled (just picked 5 meter arbitrarily)
 	c = 343; % speed of sound is 343 m/sec
 	timeDelay = d/c;
-	RX=cos(2*pi*(1/2*(t-timeDelay).^2 * B/chirpDuration + fmin*(t-timeDelay)));
+	RX=cos(2*pi*(1/2*(t-timeDelay).^2 * B/chirpDuration + fmin*(t-timeDelay))); % assume no attenuation.
 	figure;
-	plot(t, RX);
+	plot(t, RX); % received signal in time domain.
 	```
-	You should see a plot as shown below, which displays the decaying exponential function as a function of time. The rate of decay is set by the time constant of the exponential, which corresponds to variable tau in the above example. Try different values of `tau` in the above example to see how it influences the decay time of the exponential.  
-	![image](https://user-images.githubusercontent.com/27924407/211993801-c78b58cd-0744-4b71-ae27-39e67e9a15ed.png) 
-	
-	The decaying exponential that you are seeing above is not the same as the complex exponentials. While the above plot shows a decaying exponential, the expression that exponential damping is typically associated with is a non-exponential waveform whose amplitude decays in an exponential fashion. A very relevant example is the exponential damping of a sine wave, as illustrated by executing the following MATLAB commands (with tau = 7e-3):
-	```MATLAB
-	y_damped = sin(2*pi*330*t).*exp(-t/tau);
-	plot(t,y_damped);
-	```
-	After execution of the above command, you should see the plot below. Be
-sure to note the use of the two characters `.*` in the above example – the
-`.*` character combination is used when multiplying two vectors on an element-by-element basis. Try changing `tau` to a few different values to see the resulting waveform changes.
 
-	![image](https://user-images.githubusercontent.com/27924407/211994296-773359f4-a62f-48aa-974c-ad9e5f3a46db.png)
+Now the question is how can we measure &Delta;f based on RX signal. We assume RX knows what exactly TX signal's parameters are (i.e., fmin, Bandwidth, Chirp Duration, Sampling rate, etc). 
 
-* To see the frequency domain content of a given signal in MATLAB, we typically use the function `fft` (which stands for Fast Fourier Transform). The `fft` operates on non-periodic signals which are sampled in time and have finite length. The output of the `fft` is very similar to what we would expect from doing the Fourier Series of a periodic signal – we essentially obtain `a` and `b` coefficients which can be examined to see the frequency content of a given signal.
+What the receiver do is it will "mixes" (multiplies) the received RX signal with TX signal and apply FFT and see if we see any peaks in the FFT plot. The frequency that peaks 
+
+* How to 
+To see the frequency domain content of a given signal in MATLAB, we typically use the function `fft` (which stands for Fast Fourier Transform). The `fft` operates on non-periodic signals which are sampled in time and have finite length. The output of the `fft` is very similar to what we would expect from doing the Fourier Series of a periodic signal – we essentially obtain `a` and `b` coefficients which can be examined to see the frequency content of a given signal.
 	* In MATLAB, type `edit fft_example.m`
 	* Answer yes when prompted for the creation of a new file. 
 	* Within the new edit window, type in the following commands, save and run the script.
