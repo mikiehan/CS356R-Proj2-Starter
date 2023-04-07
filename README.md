@@ -52,7 +52,7 @@ Let's generate FMCW in time domain where the actual equation is as follows:
 	![image](./FMCW_equation.png)
 
 Also we will plot the signal in both time domain and in frequency domain. 
-
+* Continue typing the following commands in MATLAB:
 	```MATLAB
 	TX=cos(2*pi*(1/2*t.^2 * B/chirpDuration + fmin*t)); % one chirp of FMCW signal 
 	figure;
