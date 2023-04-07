@@ -15,7 +15,7 @@ The basic idea for FMCW signal is since the received signal (RX) is a delayed co
 
 Based on the FMCW signal figure. Answer the following questions.
 
-* What is the slope of TX signal (which is the same as the slope of RX signal) in terms of Bandwidth B and Chirp duration T? <span style="color:red">[Put your answer here]</span>
+* What is the slope of TX signal (which is the same as the slope of RX signal) in terms of Bandwidth B and Chirp duration T? <span style="color:red">Put your answer here.</span>
 
 * 
 
