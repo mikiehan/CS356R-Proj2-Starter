@@ -108,6 +108,6 @@ After completing your code and running it, you should now see a clear peak in th
 
 * Q8: Check in your completed .m file in this repository.
 
-* Q9: Also check in the final FFT figure (you can save as jpg) in this repository.
+* Q9: Also check in the final FFT figure in this repository. In MATLAB figure File menu, you can save as jpg - use 'FFT_result.jpg' as the file name.
 
 * Q10: Note in this pre-project exercise we only used 1 chirp (1 sweep) of FMCW signal. Describe how you can use similar technique used here to estimate the distance that is changing over time (such as a walking person, a breathing body). [Put your answer here.]
