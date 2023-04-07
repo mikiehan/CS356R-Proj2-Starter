@@ -68,7 +68,7 @@ In the spectogram plot, you can see clearly the signal is increasing from fmin t
 
 What would received signal be? RX is the delayed copy of the TX signal. Thus in the St(t) equation shown above, instead of t, we can simply apply t-&Delta;t instead resulting below equation, where &alpha; is the attenuation factor and td is &Delta;t (i.e., TOF).
 
-	![image](./FMCW_rx_equation.png).
+![image](./FMCW_rx_equation.png).
 
 * Here in this pre-lab exercise, we generate RX for illustration purpose only, but in real setting RX will be measured at the wireless device. Let's continue typing below commands in MATLAB:
 	```MATLAB
