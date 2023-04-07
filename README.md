@@ -15,15 +15,15 @@ The basic idea for FMCW signal is since the received signal (RX) is a delayed co
 
 Based on the FMCW signal figure. Answer the following questions.
 
-* What is the slope of the TX signal (which is the same as the slope of RX signal) expressed in terms of Bandwidth B and Chirp duration T? [Put your answer here] -> Let's call this Equation 1.
+* Q1: What is the slope of the TX signal (which is the same as the slope of RX signal) expressed in terms of Bandwidth B and Chirp duration T? [Put your answer here] -> Let's call this Equation 1.
 
-* What is TOF expressed in terms of &Delta;f and the slope? [Put your answer here] --> Let's call this Equation 2. 
+* Q2: What is TOF expressed in terms of &Delta;f and the slope? [Put your answer here] --> Let's call this Equation 2. 
 
-* What is the distance traveled by the wireless signal expressed in terms of speed of sound and TOF? [Put your answer here] --> Let's call this Equation 3. 
+* Q3: What is the distance traveled by the wireless signal expressed in terms of speed of sound and TOF? [Put your answer here] --> Let's call this Equation 3. 
 
-* Putting it all together: Using Eq 1, Eq 2, and Eq 3, how can you express the distance traveled in terms of speed of sound, &Delta;f, T, and B? [Pur your answer here] --> Let's call this Equation 4.
+* Q4: Putting it all together: Using Eq 1, Eq 2, and Eq 3, how can you express the distance traveled in terms of speed of sound, &Delta;f, T, and B? [Pur your answer here] --> Let's call this Equation 4.
 
-* As you can see from Equation 4, the only parameter we do not know thus need to measure is Equation 4 [Put your answer here]. 
+* Q5: As you can see from Equation 4, the only parameter we do not know thus need to measure is [Put your answer here]. 
 
 Let's now talk specifics about our experiment setting. In our setting, the acoustic FMCW signal is transmitted from the wireless device and reaches the body and reflected back to the wireless device, thus distance traveled is 2*D where D is the one way distance from the device to the body. 
 	![image](./distance.png)
