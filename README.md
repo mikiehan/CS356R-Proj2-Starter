@@ -112,5 +112,8 @@ You should now see a plot as shown below.
  
 	  ![image](./FFT_peak.jpg)  	
 	
-* Q6: What is the peak frequency in Hz you see here? 
-* Q7: What is the estimated distance estimation based on Q6? 
+* Q6: What is the peak frequency in Hz you see here? [Put your answer here.]
+
+* Q7: What is the estimated distance estimation based on Q6? [Put your answer here.]
+
+* Q8: Note in this pre-project exercise we only used 1 chirp (1 sweep) of FMCW signal. Describe how you can use similar technique used here to estimate the distance that is changing over time (such as breathing human body). [Put your answer here.]
