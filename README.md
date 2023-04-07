@@ -84,11 +84,11 @@ Now the question is how can we measure &Delta;f based on RX signal. Note TX sign
 
 What the receiver do is first it will filter the received signal so that it contains only the frequency components within the range of [fmin, fmax]. Then, it will "mix" (multiplies) the received RX signal with TX signal, which yields the following equation.
 
-	![image](./FMCW_mixed_equation.png)
+![image](./FMCW_mixed_equation.png)
 
 Let R = 2 * D, and Vs = speed of sound, then &Delta;t is R/Vs. Plugging &Delta;t = R/Vs and simplifying, Sm(t) becomes: 
 
-	![image](./FMCW_mixed_full_equation.png)
+![image](./FMCW_mixed_full_equation.png)
 
 and apply FFT. and see if we see any peaks in the FFT plot. The frequency that peaks 
 
