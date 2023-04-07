@@ -12,7 +12,7 @@ The green line represents the transmitted signal where the frequency increases f
 The red line represents the received signal which is the delayed copy of the transmitted signal by &Delta;t = distance traveled/speed of signal. 
 
 In our experiment setting, the wireless signal is transmitted and received back to the wireless device, thus distance traveled is 2D where D is the one way distance from the device to the human body. 
-	![image](./FMCW.png)
+	![image](./distance.png)
 
 In our experiment, we will be using acoustic FMCW signal where the speed of sound is 343 m/s and its frequency range is from 10kHz till 22kHz.
 
