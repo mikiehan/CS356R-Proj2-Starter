@@ -11,10 +11,10 @@ The green line represents the transmitted signal where the frequency increases f
 
 The red line represents the received signal which is the delayed copy of the transmitted signal by &Delta;t (aka TOF, Time Of Flight)= distance traveled/speed of signal.
 
-In our experiment setting, the wireless signal is transmitted and received back to the wireless device, thus distance traveled is 2*D where D is the one way distance from the device to the human body. 
+In our experiment setting, the acoustic FMCW signal is transmitted from the wireless device and reaches the body and reflected back to the wireless device, thus distance traveled is 2*D where D is the one way distance from the device to the body. 
 	![image](./distance.png)
 
-In our experiment, we will be using acoustic FMCW signal where the speed of sound is 343 m/s and its frequency range is from 10kHz till 22kHz.
+The acoustic FMCW signal travels at 343 m/s (this is the speed of sound) and we use the frequency range is from 10kHz till 22kHz (Bandwidth of 12kHz).
 
 * What is FMCW Signal? To understand, type the following commands in MATLAB:
 	```MATLAB
